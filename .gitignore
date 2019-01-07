@@ -1,0 +1,7 @@
+*.pyc
+*.log
+*.sublime-project
+*.sublime-workspace
+csm/settings/local.py
+/media/uploads/*
+/static
