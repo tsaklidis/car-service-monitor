@@ -1,8 +1,8 @@
-{% extends "base.html" %}
+{% extends "base_nav.html" %}
 
-{% block page_title %}Public Home{% endblock %}
+{% block page_title %}Panel Home{% endblock %}
 {% block site_css %}
-    <link href="{{ static('csm/css/public/home.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ static('csm/css/panel/home.css') }}" rel="stylesheet" type="text/css">
 {% endblock %}
 {% block extra_head %}{% endblock%}
 {% block meta_description %}{% endblock %}
@@ -10,6 +10,6 @@
 
 
 {% block main %}
-	Something public here 
+	Something secret here
 {% endblock %}
 {% block site_js %}{% endblock %}

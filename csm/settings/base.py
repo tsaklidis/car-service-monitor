@@ -19,6 +19,8 @@ INSTALLED_APPS = [
     'csm.cars',
     'csm.companies',
     'csm.public',
+    'csm.panel',
+    'csm.users',
 ]
 
 MIDDLEWARE = [
@@ -105,3 +107,7 @@ TIME_ZONE = 'Europe/Athens'
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Login urls
+LOGIN_URL = '/user/login/'
