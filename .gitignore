@@ -2,6 +2,7 @@
 *.log
 *.sublime-project
 *.sublime-workspace
+*.sqlite3
 csm/settings/local.py
 /media/uploads/*
 /static
