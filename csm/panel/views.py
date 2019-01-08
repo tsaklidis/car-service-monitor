@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 from csm.companies.models import Company
 from csm.users.models import Owner
+from csm.cars.models import Car
 
 
 def is_manager(user):
@@ -42,3 +43,16 @@ def owners(request):
         'company': company,
     }
     return render(request, 'panel/owners.html', data)
+
+
+@login_required
+@user_passes_test(is_manager, login_url='public:no_rights')
+def cars(request):
+    company = Company.objects.get(manager__id=request.user.id)
+    cars = Car.objects.filter(company=company)
+    data = {
+        'cars': cars,
+        'manager': company.manager,
+        'company': company,
+    }
+    return render(request, 'panel/cars.html', data)

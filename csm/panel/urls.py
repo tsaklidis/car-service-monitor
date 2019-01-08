@@ -5,4 +5,5 @@ urlpatterns = [
     # panel page
     url('^$', views.home, name='home'),
     url('^owners/', views.owners, name='owners'),
+    url('^cars/', views.cars, name='cars'),
 ]

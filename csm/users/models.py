@@ -62,6 +62,4 @@ class Owner(models.Model):
             return full_name
 
     def __unicode__(self):
-        if self.serial:
-            return u'Owner: {0}'.format(self.serial)
-        return u'Owner: {0} {1}'.format(self.first_name, self.last_name)
+        return u'{0} {1}'.format(self.first_name, self.last_name)
