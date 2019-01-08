@@ -10,6 +10,22 @@
 
 
 {% block main %}
-	Something public here 
+<div class="container text-center">
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="info">
+				<h4>Car Service Monitor</h4>
+				<p class="alert alert-info text-left">
+					Login with credentials to check the system functions <br>
+					u:<b>john</b><br>
+					p:<b>rambo</b>
+				</p>
+				<a class="btn btn-info" href="{{ url('panel:home') }}">Login</a>
+			</div>
+		</div>
+	</div>
+
+</div>
 {% endblock %}
 {% block site_js %}{% endblock %}

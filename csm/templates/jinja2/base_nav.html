@@ -30,12 +30,21 @@
                     </p>
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Cars</a>
+                            <a class="nav-link" href="#">Owners</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Garage</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Departments</a>
                         </li>
                     </ul>
+
+                    <div class="btns_wrp">
+                        <a class="nav-link" href="{{ url('users:auth_logout') }}" id="logout" title="Logout">
+                            <i class="fa fa-power-off"></i>
+                        </a>
+                    </div>
                 </nav>
 
                 <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">

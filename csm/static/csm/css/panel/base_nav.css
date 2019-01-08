@@ -54,7 +54,31 @@ body {
 }
 
 
+.btns_wrp{
+    position: absolute;
+    bottom: 2px;
+}
+.btns_wrp a{
+    display: inline-block;
+    color:white;
+    -webkit-transition:all 400ms linear;
+    -moz-transition:all 400ms linear;
+    -ms-transition:all 400ms linear;
+    -o-transition:all 400ms linear;
+    transition:all 400ms linear;
+}
 
+.btns_wrp a:hover{
+    border-radius: 4px;
+}
+
+#logout{
+    background-color: #a10909;
+}
+#logout:hover{
+    background-color: white;
+    color:#a10909;
+}
 
 @media only screen and (max-device-width: 576px) {
 

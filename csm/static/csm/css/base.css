@@ -1,0 +1,8 @@
+body {
+    color: #73879C;
+    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
+    font-size: 14px;
+}
+
+.footer-text, .footer-text a{color: #b9b9b9;}
+.footer-text a{text-decoration: underline;}

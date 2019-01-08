@@ -9,6 +9,6 @@ urlpatterns = [
     url(r'panel/', include('csm.panel.urls', 'panel')),
     url(r'', include('csm.public.urls', 'public')),
 
-    url(r'^user/', include('csm.users.urls', 'user')),
+    url(r'^user/', include('csm.users.urls', 'users')),
     url(r'^admin/', admin.site.urls),
 ]
