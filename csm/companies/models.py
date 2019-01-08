@@ -1,12 +1,15 @@
 import datetime
 
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
 from uuslug import uuslug as slugify
 
 
 class Company(models.Model):
+
+    manager = models.OneToOneField(User)
 
     name = models.CharField(max_length=255, blank=False,
                             verbose_name=_(u'Name'))

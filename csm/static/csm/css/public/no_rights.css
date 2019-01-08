@@ -1,0 +1,11 @@
+body {
+    background-color: #2A3F54;
+    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
+    font-size: 13px;
+    color:white;
+}
+
+.info{
+	max-width: 400px;
+	margin: 80px auto;
+}

@@ -4,7 +4,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{% block page_title %}{% endblock %}</title>
+        <title>Admin panel | {% block page_title %}{% endblock %}</title>
         <meta name="author" content="Stefanos i. Tsaklidis">
         <meta name="description" content="{% block meta_description %}{% endblock %}">
         <meta name="keywords" content="{% block keywords %}{% endblock %}">
@@ -24,13 +24,16 @@
             <div class="row">
                 
                 <nav class="col-sm-3 col-md-2 sidebar">
-                    <p class="ars-title text-center">
-                        CSM Admin Panel
+                    <p class="text-center">
+                        {{company.name}}
                         <div class="line"></div>
                     </p>
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Owners</a>
+                            <a class="nav-link" href="{{ url('panel:home') }}" id="home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('panel:owners') }}" id="owners">Owners</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Garage</a>

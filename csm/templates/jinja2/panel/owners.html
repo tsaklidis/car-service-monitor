@@ -1,0 +1,42 @@
+{% extends "base_nav.html" %}
+
+{% block page_title %}Owners{% endblock %}
+{% block site_css %}
+    <link href="{{ static('csm/css/panel/owners.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block extra_head %}{% endblock%}
+{% block meta_description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+
+{% block main %}
+	<table class="table table-hover text-left">
+		<thead>
+	      <tr>
+	        <th>Firstname</th>
+	        <th>Lastname</th>
+	        <th>Email</th>
+	        <th>Cars</th>
+	        <th>Customer from</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+			{% for owner in owners %}
+				<tr>
+		    		<td>{{owner.first_name}}</td>
+		    		<td>{{owner.last_name}}</td>
+		    		<td>{{owner.email}}</td>
+		    		<td> - </td>
+		    		<td>{{owner.created_on.strftime('%d-%h-%Y')}}</td>
+				</tr>
+			{% endfor %}
+	    </tbody>
+	</table>
+{% endblock %}
+{% block site_js %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#owners').addClass('active');
+		});
+	</script>
+{% endblock %}

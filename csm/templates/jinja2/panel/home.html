@@ -1,6 +1,6 @@
 {% extends "base_nav.html" %}
 
-{% block page_title %}Panel Home{% endblock %}
+{% block page_title %}Home{% endblock %}
 {% block site_css %}
     <link href="{{ static('csm/css/panel/home.css') }}" rel="stylesheet" type="text/css">
 {% endblock %}
@@ -10,6 +10,13 @@
 
 
 {% block main %}
-	Something secret heree
+	Some stats here or who knows...
 {% endblock %}
-{% block site_js %}{% endblock %}
+{% block site_js %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#home').addClass('active');
+
+		});
+	</script>
+{% endblock %}

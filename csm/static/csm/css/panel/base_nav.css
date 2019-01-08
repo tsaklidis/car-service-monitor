@@ -80,6 +80,7 @@ body {
     color:#a10909;
 }
 
+
 @media only screen and (max-device-width: 576px) {
 
     .sidebar {position: relative;}
