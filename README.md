@@ -2,4 +2,4 @@
 
 Monitor your car service. For company and personal use. 
 
-Check some alpha features <a href="csm.pythonanywhere.com">here</a>
+Check some alpha features <a href="https://csm.pythonanywhere.com/">here</a>
