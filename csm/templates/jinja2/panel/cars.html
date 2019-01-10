@@ -19,7 +19,7 @@
 	        <th>Brand</th>
 	        <th>Kilometers</th>
 	        <th>Price</th>
-	        <th>Serial</th>
+	        <th>CC</th>
 	        <th>License Plate</th>
 	      </tr>
 	    </thead>
@@ -29,8 +29,8 @@
 					<td>{{car.owner.full_name()}}</td>
 		    		<td>{{car.brand}}</td>
 		    		<td>{{car.kilometers}}</td>
-		    		<td>{{car.price}}</td>
-		    		<td>{{car.serial}}</td>
+		    		<td>&euro; {{car.price}}</td>
+		    		<td>{{car.cc}}</td>
 		    		<td>{{car.license_plate}}</td>
 				</tr>
 			{% endfor %}

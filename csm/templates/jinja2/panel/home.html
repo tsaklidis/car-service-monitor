@@ -10,7 +10,19 @@
 
 
 {% block main %}
-	Some stats here or who knows...
+	<h3 class="text-center">System information</h3><hr>
+	<div class="wrp">
+		<div class="info_head">Owners</div>
+		<div class="circle color_one">{{owners}}</div>
+	</div>
+	<div class="wrp">
+		<div class="info_head">Cars</div>
+		<div class="circle color_two">{{cars}}</div>
+	</div>
+	<div class="wrp">
+		<div class="info_head">Owner with most cars</div>
+		<div class="circle color_three">{{most_cars_owner}}</div>
+	</div>
 {% endblock %}
 {% block site_js %}
 	<script type="text/javascript">

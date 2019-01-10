@@ -1,0 +1,28 @@
+.circle{
+	border-radius: 100%;
+	display: inline-block;
+	height: 120px;
+	width: 120px;
+	line-height: 120px;
+	color:white;
+	text-align: center;
+	font-size: 17px;
+	box-shadow: 2px 2px 3px #a8a8a8;
+}
+.color_one{background-color: #1a7dbb;}
+.color_two{background-color: #1ABB68;}
+.color_three{background-color: #BB201A;}
+.info_head{
+	background-color: #1abb9c;
+	color: white;
+	padding: 6px;
+	margin: 5px;
+	border-radius: 4px;
+	box-shadow: 2px 2px 3px #a8a8a8;
+}
+.wrp{
+	display: inline-block;
+	text-align: center;
+	font-size: 16px;
+	padding: 5px;
+}

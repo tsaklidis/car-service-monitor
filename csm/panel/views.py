@@ -1,9 +1,12 @@
+from django.db.models import Max
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 from csm.companies.models import Company
 from csm.users.models import Owner
 from csm.cars.models import Car
+
+from django.db import connection
 
 
 def is_manager(user):
@@ -25,7 +28,23 @@ def is_manager(user):
 @user_passes_test(is_manager, login_url='public:no_rights')
 def home(request):
     company = Company.objects.get(manager__id=request.user.id)
+    owners = Owner.objects.filter(company=company)
+    cars = Car.objects.filter(owner__company=company).count()
+
+    # Attention: Lot of queries, slowing down homepage
+    # TODO fix relations
+    max_cars = -1
+    most_cars_owner = ''
+    for ow in owners:
+        if ow.owned_cars > max_cars:
+            most_cars_owner = ow.full_name()
+
+    print connection.queries
+
     data = {
+        'owners': owners.count(),
+        'cars': cars,
+        'most_cars_owner': most_cars_owner,
         'manager': company.manager,
         'company': company,
     }

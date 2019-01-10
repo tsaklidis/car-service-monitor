@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from csm.cars.models import Car
 from csm.utils.unique import unique_id
 
 
@@ -43,6 +44,10 @@ class Owner(models.Model):
         max_length=100,
         blank=True, null=True,
         default=unique_id)
+
+    @property
+    def owned_cars(self):
+        return Car.objects.filter(owner__id=self.id).count()
 
     def full_name(self):
         """Returns the first_name, middle_name plus the last_name,
