@@ -13,8 +13,7 @@
 	<table class="table table-hover text-left">
 		<thead>
 	      <tr>
-	        <th>Firstname</th>
-	        <th>Lastname</th>
+	        <th>Name</th>
 	        <th>Email</th>
 	        <th>Cars</th>
 	        <th>Customer from</th>
@@ -23,10 +22,9 @@
 	    <tbody>
 			{% for owner in owners %}
 				<tr>
-		    		<td>{{owner.first_name}}</td>
-		    		<td>{{owner.last_name}}</td>
+		    		<td>{{owner.full_name()}}</td>
 		    		<td>{{owner.email}}</td>
-		    		<td> - </td>
+		    		<td> </td>
 		    		<td>{{owner.created_on.strftime('%d-%h-%Y')}}</td>
 				</tr>
 			{% endfor %}
