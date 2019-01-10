@@ -79,7 +79,7 @@ body {
     background-color: white;
     color:#a10909;
 }
-
+.color_head{background-color: #1abb9c;color: white;}
 
 @media only screen and (max-device-width: 576px) {
 

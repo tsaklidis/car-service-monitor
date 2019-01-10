@@ -1,0 +1,6 @@
+.first_bold tbody tr td:first-child{
+	font-weight: bold;
+	border-right: 1px dotted #ccc;
+	max-width: 50px;
+}
+.first_bold span{padding: 0px 40px; margin-left: 5px;}

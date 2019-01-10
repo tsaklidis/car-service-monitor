@@ -6,8 +6,6 @@ from csm.companies.models import Company
 from csm.users.models import Owner
 from csm.cars.models import Car
 
-from django.db import connection
-
 
 def is_manager(user):
     # also import 'redirect' from shortcuts
@@ -29,22 +27,22 @@ def is_manager(user):
 def home(request):
     company = Company.objects.get(manager__id=request.user.id)
     owners = Owner.objects.filter(company=company)
-    cars = Car.objects.filter(owner__company=company).count()
-
+    cars = Car.objects.filter(owner__company=company)
+    most_ex_car = cars.aggregate(Max('price'))
+    most_tr_car = cars.aggregate(Max('kilometers'))
     # Attention: Lot of queries, slowing down homepage
     # TODO fix relations
-    max_cars = -1
-    most_cars_owner = ''
-    for ow in owners:
-        if ow.owned_cars > max_cars:
-            most_cars_owner = ow.full_name()
-
-    print connection.queries
+    # max_cars = -1
+    # most_cars_owner = ''
+    # for ow in owners:
+    #     if ow.owned_cars > max_cars:
+    #         most_cars_owner = ow.full_name()
 
     data = {
         'owners': owners.count(),
-        'cars': cars,
-        'most_cars_owner': most_cars_owner,
+        'cars': cars.count(),
+        'most_ex_car': most_ex_car['price__max'],
+        'most_tr_car': most_tr_car['kilometers__max'],
         'manager': company.manager,
         'company': company,
     }
@@ -75,3 +73,21 @@ def cars(request):
         'company': company,
     }
     return render(request, 'panel/cars.html', data)
+
+
+@login_required
+@user_passes_test(is_manager, login_url='public:no_rights')
+def car_single(request, car_id=None):
+
+    company = Company.objects.get(manager__id=request.user.id)
+    try:
+        car = Car.objects.get(company=company, id=car_id)
+    except Car.DoesNotExist:
+        car = Car.objects.filter(company=company).last()
+
+    data = {
+        'car': car,
+        'manager': company.manager,
+        'company': company,
+    }
+    return render(request, 'panel/car_single.html', data)

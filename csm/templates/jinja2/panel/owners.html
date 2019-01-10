@@ -12,7 +12,7 @@
 {% block main %}
 	<table class="table table-hover text-left">
 		<thead>
-	      <tr>
+	      <tr class="color_head">
 	        <th>Name</th>
 	        <th>Email</th>
 	        <th>Cars</th>
@@ -24,7 +24,7 @@
 				<tr>
 		    		<td>{{owner.full_name()}}</td>
 		    		<td>{{owner.email}}</td>
-		    		<td> </td>
+		    		<td>{{owner.owned_cars}}</td>
 		    		<td>{{owner.created_on.strftime('%d-%h-%Y')}}</td>
 				</tr>
 			{% endfor %}

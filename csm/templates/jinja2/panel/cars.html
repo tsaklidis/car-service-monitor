@@ -10,28 +10,29 @@
 
 
 {% block main %}
+	<h3 class="text-center">Available cars</h3><hr>
 	<div class="btn btn-sm btn-success disabled"> <i class="fa fa-plus"></i> New car</div>
 	<br><br>
 	<table class="table table-hover text-left">
 		<thead>
-	      <tr>
-	      	<th>Owner</th>
+	      <tr class="color_head">
 	        <th>Brand</th>
 	        <th>Kilometers</th>
 	        <th>Price</th>
 	        <th>CC</th>
 	        <th>License Plate</th>
+	      	<th>Owner</th>
 	      </tr>
 	    </thead>
 	    <tbody>
 			{% for car in cars %}
 				<tr>
-					<td>{{car.owner.full_name()}}</td>
-		    		<td>{{car.brand}}</td>
+		    		<td> <a href="{{ url('panel:car_single', args=[car.id]) }}">{{car.brand}}</a> </td>
 		    		<td>{{car.kilometers}}</td>
 		    		<td>&euro; {{car.price}}</td>
 		    		<td>{{car.cc}}</td>
 		    		<td>{{car.license_plate}}</td>
+					<td>{{car.owner.full_name()}}</td>
 				</tr>
 			{% endfor %}
 	    </tbody>

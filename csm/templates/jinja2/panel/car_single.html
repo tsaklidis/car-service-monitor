@@ -1,0 +1,102 @@
+{% extends "base_nav.html" %}
+
+{% block page_title %}License Plate: {{car.license_plate}}{% endblock %}
+{% block site_css %}
+    <link href="{{ static('csm/css/panel/car_single.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block extra_head %}{% endblock%}
+{% block meta_description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+
+{% block main %}
+	<h3 class="text-center">License Plate: {{car.license_plate}}</h3> <hr>
+	<div class="row">
+		<div class="col-lg-4 col-md-4">
+			<a href="https://placeholder.com"><img src="https://via.placeholder.com/200"></a>
+			<a href="https://placeholder.com"><img src="https://via.placeholder.com/200"></a><br><br>
+			<a href="https://placeholder.com"><img src="https://via.placeholder.com/200"></a>
+			<a href="https://placeholder.com"><img src="https://via.placeholder.com/200"></a>
+		</div>
+		<div class="col-lg-8 col-md-8">
+
+			<table class="table table-striped text-left first_bold">
+			    <thead>
+			      <tr class="color_head">
+			        <th colspan="2">All info</th>
+			    </thead>
+			    <tbody>
+			    	<tr>
+			    		<td>Car Owner</td><td>{{car.owner}}</td>
+			    	</tr>
+
+					<tr>
+						<td>Brand</td>  <td>{{car.brand}}</td> 
+					</tr>
+					<tr>
+						<td>Kilometers</td>  <td>{{car.kilometers}}</td> 
+					</tr>
+					<tr>
+						<td>Price</td>  <td>{{car.price}} &euro;</td> 
+					</tr>
+					<tr>
+						<td>Horse Power</td>  <td>{{car.hp}} bhp</td> 
+					</tr>
+					<tr>
+						<td>Car Cubic</td>  <td>{{car.cc}} cc</td> 
+					</tr>
+					<tr>
+						<td>Gearbox</td>  <td>{{car.gearbox}}</td> 
+					</tr>
+					<tr>
+						<td>Color</td>  <td>{{car.color}} <span style="background-color:{{car.color}};"></span></td> 
+					</tr>
+					<tr>
+						<td>Toxic emission:</td>  <td>{{car.euro_type}}</td> 
+					</tr>
+					<tr>
+						<td>License Plate</td>  <td>{{car.license_plate}}</td> 
+					</tr>
+					<tr>
+						<td>Serial</td>  <td>{{car.serial}}</td> 
+					</tr>
+					<tr>
+						<td>Fuel</td>  <td>{{car.fuel}}</td> 
+					</tr>
+					<tr>
+						<td>Owners Before</td>  <td>{{car.owners_before}}</td> 
+					</tr>
+					<tr>
+						<td>Movement</td>  <td>{{car.movement}}</td> 
+					</tr>
+					<tr>
+						<td>Manufactured</td>  <td>{{car.manufactured.strftime('%d-%h-%Y')}}</td> 
+					</tr>
+					<tr>
+						<td>Airbags</td>  <td>{{car.airbags}}</td> 
+					</tr>
+					<tr>
+						<td>Dors</td> <td>{{car.dors}}</td> 
+					</tr>
+					
+					<tr>
+						<td>Registered to {{company.name}}</td> <td>{{car.created_on.strftime('%d-%h-%Y')}}</td>
+					</tr>
+
+					<tr>
+						<td colspan="2" class="text-right"><button class="btn btn-danger">Delete Car</button></td>
+					</tr>
+	
+			    </tbody>
+			</table>
+		</div>
+	</div>
+	
+{% endblock %}
+{% block site_js %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#cars').addClass('active');
+		});
+	</script>
+{% endblock %}
