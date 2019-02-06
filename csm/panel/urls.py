@@ -5,7 +5,8 @@ urlpatterns = [
     # panel page
     url('^$', views.home, name='home'),
     url('^owners/', views.owners, name='owners'),
-    url('^cars/', views.cars, name='cars'),
+    url('^cars/$', views.cars, name='cars'),
+    url('^cars/new/$', views.car_new, name='car_new'),
     url('^view/(?P<car_id>[\d]+)/car/$', views.car_single, name='car_single'),
 
 ]

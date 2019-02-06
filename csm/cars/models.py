@@ -16,7 +16,8 @@ GEARS = (
 class Car(models.Model):
     company = models.ForeignKey('companies.Company')
 
-    owner = models.ForeignKey('users.Owner', related_name='owner')
+    owner = models.ForeignKey(
+        'users.Owner', related_name='owner', blank=True, null=True)
 
     brand = models.CharField(max_length=255, blank=False,
                              verbose_name=_(u'Car Brand'), help_text='eg:Fiat')

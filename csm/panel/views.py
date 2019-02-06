@@ -6,6 +6,8 @@ from csm.companies.models import Company
 from csm.users.models import Owner
 from csm.cars.models import Car
 
+import csm.cars.forms as forms
+
 
 def is_manager(user):
     # also import 'redirect' from shortcuts
@@ -85,6 +87,29 @@ def cars(request):
         'order': order,
     }
     return render(request, 'panel/cars.html', data)
+
+
+@login_required
+@user_passes_test(is_manager, login_url='public:no_rights')
+def car_new(request):
+    company = Company.objects.get(manager__id=request.user.id)
+
+    car_form = forms.CarForm(
+        request.POST or None, request.FILES or None)
+
+    if car_form.is_valid():
+        car = car_form.save(commit=False)
+        car.company = company
+        car.save()
+
+        print 'valid car'
+
+    data = {
+        'manager': company.manager,
+        'company': company,
+        'car_form': car_form,
+    }
+    return render(request, 'panel/car_new.html', data)
 
 
 @login_required

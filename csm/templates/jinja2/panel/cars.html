@@ -11,7 +11,7 @@
 
 {% block main %}
 	<h3 class="text-center">Available cars</h3><hr>
-	<div class="btn btn-sm btn-success disabled"> <i class="fa fa-plus"></i> New car</div>
+	<a class="btn btn-sm btn-success" href="{{ url('panel:car_new')}}"> <i class="fa fa-plus"></i> New car</a>
 	<br><br>
 	<table class="table table-hover text-left">
 		<thead>

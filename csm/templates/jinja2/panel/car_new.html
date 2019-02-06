@@ -1,0 +1,193 @@
+{% extends "base_nav.html" %}
+
+{% block page_title %}New car{% endblock %}
+{% block site_css %}
+    <link href="{{ static('csm/css/panel/car_new.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block extra_head %}{% endblock%}
+{% block meta_description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+
+{% block main %}
+    <h3 class="text-center">Add new car</h3><hr>
+    <br><br>
+
+    <form method="post" action="{{ url('panel:car_new') }}" role="form" enctype="multipart/form-data">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6 text-left" >
+                <div class="form-group">
+                    <span>{{car_form.brand.label}}</span>
+                    {{ car_form.brand}}
+                    {% if car_form.brand.errors%}
+                    <div class="alert alert-danger">
+                        {{car_form.brand.errors}}
+                    </div>
+                    {% endif %}
+                </div> 
+
+                <div class="form-group">
+                    <span>{{car_form.kilometers.label}}</span>
+                    {{ car_form.kilometers}}
+                    {% if car_form.kilometers.errors%}
+                    <div class="alert alert-danger">
+                        {{car_form.kilometers.errors}}
+                    </div>
+                    {% endif %}
+                </div> 
+
+                <div class="form-group">
+                    <span>{{car_form.hp.label}}</span>
+                    {{ car_form.hp}}
+                    {% if car_form.hp.errors%}
+                    <div class="alert alert-danger">
+                        {{car_form.hp.errors}}
+                    </div>
+                    {% endif %}
+                </div> 
+
+                <div class="form-group">
+                    <span>{{car_form.cc.label}}</span>
+                    {{ car_form.cc}}
+                    {% if car_form.cc.errors%}
+                    <div class="alert alert-danger">
+                        {{car_form.cc.errors}}
+                    </div>
+                    {% endif %}
+                </div> 
+
+                <div class="form-group">
+                    <span>{{car_form.gearbox.label}}</span>
+                    {{ car_form.gearbox}}
+                    {% if car_form.gearbox.errors%}
+                    <div class="alert alert-danger">
+                        {{car_form.gearbox.errors}}
+                    </div>
+                    {% endif %}
+                </div> 
+
+                <div class="form-group">
+                    <span>{{car_form.color.label}}</span>
+                    {{ car_form.color}}
+                    {% if car_form.color.errors%}
+                    <div class="alert alert-danger">
+                        {{car_form.color.errors}}
+                    </div>
+                    {% endif %}
+                </div> 
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-6 text-left" >
+
+                <div class="form-group">
+                    <span>{{car_form.euro_type.label}}</span>
+                    {{ car_form.euro_type}}
+                    {% if car_form.euro_type.errors%}
+                    <div class="alert alert-danger">
+                        {{car_form.euro_type.errors}}
+                    </div>
+                    {% endif %}
+                </div> 
+
+                <div class="form-group">
+                    <span>{{car_form.license_plate.label}}</span>
+                    {{ car_form.license_plate}}
+                    {% if car_form.license_plate.errors%}
+                    <div class="alert alert-danger">
+                        {{car_form.license_plate.errors}}
+                    </div>
+                    {% endif %}
+                </div> 
+
+                <div class="form-group">
+                    <span>{{car_form.serial.label}}</span>
+                    {{ car_form.serial}}
+                    {% if car_form.serial.errors%}
+                    <div class="alert alert-danger">
+                        {{car_form.serial.errors}}
+                    </div>
+                    {% endif %}
+                </div> 
+
+                <div class="form-group">
+                    <span>{{car_form.owners_before.label}}</span>
+                    {{ car_form.owners_before}}
+                    {% if car_form.owners_before.errors%}
+                    <div class="alert alert-danger">
+                        {{car_form.owners_before.errors}}
+                    </div>
+                    {% endif %}
+                </div> 
+
+                <div class="form-group">
+                    <span>{{car_form.movement.label}}</span>
+                    {{ car_form.movement}}
+                    {% if car_form.movement.errors%}
+                    <div class="alert alert-danger">
+                        {{car_form.movement.errors}}
+                    </div>
+                    {% endif %}
+                </div> 
+
+                <div class="form-group">
+                    <span>{{car_form.manufactured.label}}</span>
+                    {{ car_form.manufactured}}
+                    {% if car_form.manufactured.errors%}
+                    <div class="alert alert-danger">
+                        {{car_form.manufactured.errors}}
+                    </div>
+                    {% endif %}
+                </div> 
+
+
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-6 text-left" >
+
+                <div class="form-group">
+                    <span>{{car_form.airbags.label}}</span>
+                    {{ car_form.airbags}}
+                    {% if car_form.airbags.errors%}
+                    <div class="alert alert-danger">
+                        {{car_form.airbags.errors}}
+                    </div>
+                    {% endif %}
+                </div> 
+
+                <div class="form-group">
+                    <span>{{car_form.dors.label}}</span>
+                    {{ car_form.dors}}
+                    {% if car_form.dors.errors%}
+                    <div class="alert alert-danger">
+                        {{car_form.dors.errors}}
+                    </div>
+                    {% endif %}
+                </div> 
+                
+                
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <div class="form-group " >
+                    <button class="btn btn-success" type="submit">Save</button>
+                    <a href="{{ url('panel:cars') }}" class="btn btn-danger">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+{% endblock %}
+{% block site_js %}
+    <script type="text/javascript">
+
+
+        $(document).ready(function() {
+            $('#cars').addClass('active');
+
+        });
+    </script>
+{% endblock %}
