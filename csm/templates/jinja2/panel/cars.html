@@ -17,9 +17,9 @@
 		<thead>
 	      <tr class="color_head">
 	        <th>Brand</th>
-	        <th>Kilometers</th>
-	        <th>Price</th>
-	        <th>CC</th>
+	        <th> <a href="?order_by=kilometers" id="kilometers">Kilometers <i class="fas fa-sort"></i></a> </th>
+	        <th> <a href="?order_by=price" id="price">Price <i class="fas fa-sort"></i></a> </th>
+	        <th><a href="?order_by=cc" id="cc">CC <i class="fas fa-sort"></i></a></th>
 	        <th>License Plate</th>
 	      	<th>Owner</th>
 	      </tr>
@@ -40,8 +40,14 @@
 {% endblock %}
 {% block site_js %}
 	<script type="text/javascript">
+
+
 		$(document).ready(function() {
 			$('#cars').addClass('active');
+
+			var order = '{{order}}';
+			$('#'+order).addClass('selected_order').attr("href","?order_by=-"+order);
+
 		});
 	</script>
 {% endblock %}

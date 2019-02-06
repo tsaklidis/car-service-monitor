@@ -27,7 +27,7 @@ class Command(BaseCommand):
         plate = ['KZP', 'NHM', 'KBP', 'TPK', 'MNA']
 
         if not total:
-            raise CommandError('Erros: How many cars?')
+            raise CommandError('[Error] How many cars?')
 
         for i in range(total):
 
@@ -56,4 +56,4 @@ class Command(BaseCommand):
                                dors=random.randint(2, 6)
                                )
 
-        self.stdout.write('Created {0} cars'.format(total))
+        self.stdout.write('[info] Created {0} cars'.format(total))

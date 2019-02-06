@@ -26,7 +26,7 @@ class Command(BaseCommand):
         company = Company.objects.last()
 
         if not total:
-            raise CommandError('Erros: How many owners?')
+            raise CommandError('[Error] How many owners?')
 
         for i in range(total):
             Owner.objects.create(company=company,
@@ -36,4 +36,4 @@ class Command(BaseCommand):
                                  email=(unique_id() + '@csm.com')
                                  )
 
-        self.stdout.write('Created {0} owners'.format(total))
+        self.stdout.write('[info] Created {0} owners'.format(total))

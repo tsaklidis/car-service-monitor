@@ -66,11 +66,23 @@ def owners(request):
 @user_passes_test(is_manager, login_url='public:no_rights')
 def cars(request):
     company = Company.objects.get(manager__id=request.user.id)
-    cars = Car.objects.filter(company=company).order_by('brand')
+
+    order_raw = request.GET.get('order_by', None)
+    order_filters = ['kilometers', 'price', 'cc',
+                     '-kilometers', '-price', '-cc',
+                     'created_on', '-created_on',
+                     None]
+    if order_raw and (order_raw in order_filters):
+        order = order_raw
+    else:
+        order = 'brand'
+
+    cars = Car.objects.filter(company=company).order_by(order)
     data = {
         'cars': cars,
         'manager': company.manager,
         'company': company,
+        'order': order,
     }
     return render(request, 'panel/cars.html', data)
 
