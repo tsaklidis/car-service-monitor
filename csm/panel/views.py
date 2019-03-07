@@ -1,11 +1,10 @@
 from django.db.models import Max
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
 
-from csm.companies.models import Company
+from csm.companies.models import Company, Garage
 from csm.users.models import Owner
 from csm.cars.models import Car
-
 import csm.cars.forms as forms
 
 
@@ -128,3 +127,31 @@ def car_single(request, car_id=None):
         'company': company,
     }
     return render(request, 'panel/car_single.html', data)
+
+
+@login_required
+@user_passes_test(is_manager, login_url='public:no_rights')
+def garage(request):
+    company = Company.objects.get(manager__id=request.user.id)
+    garages = company.get_garages()
+
+    data = {
+        'company': company,
+        'garages': garages,
+    }
+    return render(request, 'panel/garages.html', data)
+
+
+@login_required
+@user_passes_test(is_manager, login_url='public:no_rights')
+def garage_single(request, gar_id=None):
+    company = Company.objects.get(manager__id=request.user.id)
+    garage = get_object_or_404(Garage, id=gar_id)
+    cars = garage.get_cars()
+
+    data = {
+        'company': company,
+        'garage': garage,
+        'cars': cars,
+    }
+    return render(request, 'panel/garage_view.html', data)

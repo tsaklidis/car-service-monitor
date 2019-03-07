@@ -1,0 +1,15 @@
+a{font-size: 14px;}
+a:hover{text-decoration: none; }
+th a{color:#fff;}
+th a:hover{color:inherit; }
+.gar_wrp img{display: block; margin: 5px; max-width: 150px;}
+.gar{
+	display: inline-block;
+	background-color: #ececec;
+	padding: 4px;
+	border-radius: 4px;
+	box-shadow: 2px 2px 2px #c0c0c0;
+}
+
+.selected_order{text-decoration: underline;}
+#new_gar{float: right;}

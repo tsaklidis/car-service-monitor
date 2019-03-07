@@ -66,6 +66,8 @@ class Car(models.Model):
     airbags = models.IntegerField(blank=False, null=False,
                                   help_text='If no airbag type 0')
 
+    garage = models.ForeignKey('companies.Garage', blank=True, null=True)
+
     dors = models.IntegerField(blank=False, null=False)
 
     created_on = models.DateTimeField(auto_now_add=True)

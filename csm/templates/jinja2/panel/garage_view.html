@@ -1,8 +1,8 @@
 {% extends "base_nav.html" %}
 
-{% block page_title %}Cars{% endblock %}
+{% block page_title %}Garage{% endblock %}
 {% block site_css %}
-    <link href="{{ static('csm/css/panel/cars.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ static('csm/css/panel/garage.css') }}" rel="stylesheet" type="text/css">
 {% endblock %}
 {% block extra_head %}{% endblock%}
 {% block meta_description %}{% endblock %}
@@ -10,16 +10,15 @@
 
 
 {% block main %}
-	<h3 class="text-center">Available cars</h3><hr>
+	<h3 class="text-center">Cars in: {{garage.name}}</h3><hr>
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="/">Home</a></li>
-			<li class="breadcrumb-item"><a href="{{ url('panel:cars') }}">Cars</a></li>
-			<li class="breadcrumb-item active">Available Cars</li>
+			<li class="breadcrumb-item"><a href="{{ url('panel:garage') }}">Garages</a></li>
+			<li class="breadcrumb-item active" >{{garage.name}}</li>
 		</ol>
 	</nav>
-	<a class="btn btn-sm btn-success" href="{{ url('panel:car_new')}}"> <i class="fa fa-plus"></i> New car</a>
-	<br><br>
+
 
 	<table class="table table-hover text-left">
 		<thead>
@@ -45,17 +44,14 @@
 			{% endfor %}
 	    </tbody>
 	</table>
+	
+
+
 {% endblock %}
 {% block site_js %}
 	<script type="text/javascript">
-
-
 		$(document).ready(function() {
-			$('#cars').addClass('active');
-
-			var order = '{{order}}';
-			$('#'+order).addClass('selected_order').attr("href","?order_by=-"+order);
-
+			$('#garage').addClass('active');
 		});
 	</script>
 {% endblock %}

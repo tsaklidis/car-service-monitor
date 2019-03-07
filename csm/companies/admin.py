@@ -1,12 +1,18 @@
 from django.contrib import admin
 
-from csm.companies.models import Company, Department
+from csm.companies.models import Company, Department, Garage
 
 
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
     model = Company
     list_display = ('name', 'id')
+
+
+@admin.register(Garage)
+class GarageAdmin(admin.ModelAdmin):
+    model = Garage
+    list_display = ('name', 'company')
 
 
 @admin.register(Department)

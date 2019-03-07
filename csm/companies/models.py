@@ -6,6 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from uuslug import uuslug as slugify
 
+from csm.cars.models import Car
+
 
 class Company(models.Model):
 
@@ -30,6 +32,9 @@ class Company(models.Model):
         default=0,
         verbose_name=_(u'Company Size'),
         help_text=_(u'How many employees does company have'))
+
+    def get_garages(self):
+        return Garage.objects.filter(company__id=self.id)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -69,3 +74,16 @@ class Department(models.Model):
 
     class Meta:
         unique_together = ('company', 'name')
+
+
+class Garage(models.Model):
+    name = models.CharField(max_length=255, blank=False,
+                            verbose_name=_(u'Garage Name'))
+
+    company = models.ForeignKey('companies.Company')
+
+    def get_cars(self):
+        return Car.objects.filter(company=self.company, garage__id=self.id)
+
+    def __unicode__(self):
+        return u'Garage: {0} Company:'.format(self.name, self.company)

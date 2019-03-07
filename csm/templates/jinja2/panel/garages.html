@@ -1,0 +1,43 @@
+{% extends "base_nav.html" %}
+
+{% block page_title %}Garage{% endblock %}
+{% block site_css %}
+    <link href="{{ static('csm/css/panel/garage.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block extra_head %}{% endblock%}
+{% block meta_description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+
+{% block main %}
+	<h3 class="text-center">
+		Select Garage to enter
+		<a class="btn btn-sm btn-success " href="#" id="new_gar"> <i class="fa fa-plus"></i> New garage</a>
+	</h3>
+	<hr>
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="/">Home</a></li>
+			<li class="breadcrumb-item"><a href="{{ url('panel:garage') }}">Garages</a></li>
+			<li class="breadcrumb-item active" >Available garages</li>
+		</ol>
+	</nav>
+	<div class="gar_wrp ">
+		<div class="gar text-center">
+			{% for gar in garages  %}
+				
+				<a href="{{ url('panel:garage_single', args=[gar.id]) }}">
+					<img src="{{ static('csm/img/garage.png') }}">
+					Name: {{gar.name}}
+				</a>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+{% block site_js %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#garage').addClass('active');
+		});
+	</script>
+{% endblock %}
