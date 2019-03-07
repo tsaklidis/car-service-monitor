@@ -14,7 +14,7 @@ GEARS = (
 
 
 class Car(models.Model):
-    company = models.ForeignKey('companies.Company')
+    company = models.ForeignKey('companies.Company', blank=True,)
 
     owner = models.ForeignKey(
         'users.Owner', related_name='owner', blank=True, null=True)

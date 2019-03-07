@@ -9,6 +9,7 @@ th a:hover{color:inherit; }
 	padding: 4px;
 	border-radius: 4px;
 	box-shadow: 2px 2px 2px #c0c0c0;
+	margin: 2px;
 }
 
 .selected_order{text-decoration: underline;}

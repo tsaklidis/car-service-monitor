@@ -4,7 +4,8 @@ from django import forms
 
 from django.forms.widgets import TextInput, Select
 from csm.cars.models import Car
-
+from csm.companies.models import Garage
+from csm.users.models import Owner
 
 GEARS = (
     (True, 'Manual'),
@@ -187,7 +188,23 @@ class CarForm(forms.ModelForm):
                    'placeholder': 'eg: 4'
                    }))
 
+    garage = forms.ModelChoiceField(queryset=Garage.objects.all(),
+                                    empty_label='Select Garage',
+                                    required=False,
+                                    widget=Select(
+        attrs={
+            'class': 'form-control input-sm',
+        }))
+
+    owner = forms.ModelChoiceField(queryset=Owner.objects.all(),
+                                   empty_label='Select Garage',
+                                   required=False,
+                                   widget=Select(
+        attrs={
+            'class': 'form-control input-sm',
+        }))
+
     class Meta:
         model = Car
         fields = '__all__'
-        exluce = ('owner')
+        exluce = ('company', )

@@ -1,5 +1,5 @@
 from django.db.models import Max
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 from csm.companies.models import Company, Garage
@@ -96,12 +96,16 @@ def car_new(request):
     car_form = forms.CarForm(
         request.POST or None, request.FILES or None)
 
+    car_form.fields["garage"].queryset = company.get_garages()
+    car_form.fields["owner"].queryset = company.get_owners()
+
     if car_form.is_valid():
         car = car_form.save(commit=False)
         car.company = company
         car.save()
-
         print 'valid car'
+    else:
+        print car_form.errors
 
     data = {
         'manager': company.manager,
@@ -109,6 +113,38 @@ def car_new(request):
         'car_form': car_form,
     }
     return render(request, 'panel/car_new.html', data)
+
+
+@login_required
+@user_passes_test(is_manager, login_url='public:no_rights')
+def car_edit(request, car_id=None):
+    company = Company.objects.get(manager__id=request.user.id)
+
+    try:
+        car = Car.objects.get(company=company, id=car_id)
+        car_form = forms.CarForm(
+            request.POST or None, request.FILES or None, instance=car)
+    except Car.DoesNotExist:
+        return redirect('panel:cars')
+
+    car_form.fields["garage"].queryset = company.get_garages()
+    car_form.fields["owner"].queryset = company.get_owners()
+
+    if car_form.is_valid():
+        car = car_form.save(commit=False)
+        car.company = company
+        car.save()
+        return redirect('panel:car_single', car.id)
+    else:
+        print car_form.errors
+
+    data = {
+        'manager': company.manager,
+        'company': company,
+        'car_form': car_form,
+        'car': car
+    }
+    return render(request, 'panel/car_edit.html', data)
 
 
 @login_required

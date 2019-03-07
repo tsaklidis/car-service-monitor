@@ -10,25 +10,28 @@
 
 
 {% block main %}
-	<h3 class="text-center">License Plate: {{car.license_plate}}</h3> <hr>
+	<h3 class="text-center">
+			License Plate: {{car.license_plate}}
+	</h3>
+	<nav aria-label="breadcrumb">
+	    <ol class="breadcrumb">
+	        <li class="breadcrumb-item"><a href="/">Home</a></li>
+	        <li class="breadcrumb-item"><a href="{{ url('panel:cars') }}">Cars</a></li>
+	        <li class="breadcrumb-item active" >{{car.license_plate}}</li>
+	    </ol>
+	</nav>
+	<hr>
 	<div class="row">
-		<div class="col-lg-4 col-md-4">
-			<a href="https://placeholder.com"><img src="https://via.placeholder.com/200"></a>
-			<a href="https://placeholder.com"><img src="https://via.placeholder.com/200"></a><br><br>
-			<a href="https://placeholder.com"><img src="https://via.placeholder.com/200"></a>
-			<a href="https://placeholder.com"><img src="https://via.placeholder.com/200"></a>
-		</div>
+		
 		<div class="col-lg-8 col-md-8">
 
 			<table class="table table-striped text-left first_bold">
 			    <thead>
 			      <tr class="color_head">
-			        <th colspan="2">All info</th>
+			        <th colspan="2">Technical info</th>
 			    </thead>
 			    <tbody>
-			    	<tr>
-			    		<td>Car Owner</td><td>{{car.owner}}</td>
-			    	</tr>
+			    	
 
 					<tr>
 						<td>Brand</td>  <td>{{car.brand}}</td> 
@@ -54,18 +57,11 @@
 					<tr>
 						<td>Toxic emission:</td>  <td>{{car.euro_type}}</td> 
 					</tr>
-					<tr>
-						<td>License Plate</td>  <td>{{car.license_plate}}</td> 
-					</tr>
-					<tr>
-						<td>Serial</td>  <td>{{car.serial}}</td> 
-					</tr>
+					
 					<tr>
 						<td>Fuel</td>  <td>{{car.fuel}}</td> 
 					</tr>
-					<tr>
-						<td>Owners Before</td>  <td>{{car.owners_before}}</td> 
-					</tr>
+					
 					<tr>
 						<td>Movement</td>  <td>{{car.movement}}</td> 
 					</tr>
@@ -78,18 +74,53 @@
 					<tr>
 						<td>Dors</td> <td>{{car.dors}}</td> 
 					</tr>
+					<tr>
+						<td>Garage:</td> <td>{% if car.garage %} {{car.garage.name}} {% else %}Not in garage {% endif %}</td>
+					</tr>
 					
+			    </tbody>
+			</table>
+
+			<table class="table table-striped text-left first_bold">
+				<thead>
+			      <tr class="color_head">
+			        <th colspan="2">Own info</th>
+			    </thead>
+			    <tbody>
+			    	<tr>
+			    		<td>Car Owner</td><td>{{car.owner}}</td>
+			    	</tr>
+					<tr>
+						<td>License Plate</td>  <td>{{car.license_plate}}</td> 
+					</tr>
+					<tr>
+						<td>Serial</td>  <td>{{car.serial}}</td> 
+					</tr>
+					<tr>
+						<td>Owners Before</td>  <td>{{car.owners_before}}</td> 
+					</tr>
 					<tr>
 						<td>Registered to {{company.name}}</td> <td>{{car.created_on.strftime('%d-%h-%Y')}}</td>
 					</tr>
 
 					<tr>
-						<td colspan="2" class="text-right"><button class="btn btn-danger">Delete Car</button></td>
+						<td colspan="2" class="text-right">
+							<a class="btn btn-success" href="{{ url('panel:car_edit', args=[car.id]) }}">Edit Car</a>
+							<button class="btn btn-danger">Delete Car</button>
+						</td>
 					</tr>
-	
+					
 			    </tbody>
 			</table>
 		</div>
+
+		<div class="col-lg-4 col-md-4">
+			<a href="https://placeholder.com"><img src="https://via.placeholder.com/200"></a>
+			<a href="https://placeholder.com"><img src="https://via.placeholder.com/200"></a><br><br>
+			<a href="https://placeholder.com"><img src="https://via.placeholder.com/200"></a>
+			<a href="https://placeholder.com"><img src="https://via.placeholder.com/200"></a>
+		</div>
+
 	</div>
 	
 {% endblock %}

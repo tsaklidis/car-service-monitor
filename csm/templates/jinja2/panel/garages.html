@@ -23,15 +23,14 @@
 		</ol>
 	</nav>
 	<div class="gar_wrp ">
-		<div class="gar text-center">
-			{% for gar in garages  %}
-				
+		{% for gar in garages  %}
+			<div class="gar text-center">
 				<a href="{{ url('panel:garage_single', args=[gar.id]) }}">
 					<img src="{{ static('csm/img/garage.png') }}">
 					Name: {{gar.name}}
 				</a>
-			{% endfor %}
-		</div>
+			</div>
+		{% endfor %}
 	</div>
 {% endblock %}
 {% block site_js %}

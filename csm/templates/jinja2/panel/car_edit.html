@@ -1,6 +1,6 @@
 {% extends "base_nav.html" %}
 
-{% block page_title %}New car{% endblock %}
+{% block page_title %}Edit car {{car.license_plate}}{% endblock %}
 {% block site_css %}
     <link href="{{ static('csm/css/panel/car_new.css') }}" rel="stylesheet" type="text/css">
 {% endblock %}
@@ -10,17 +10,17 @@
 
 
 {% block main %}
-    <h3 class="text-center">Add new car</h3><hr>
+    <h3 class="text-center">Edit car: {{car.license_plate}}</h3><hr>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ url('panel:cars') }}">Cars</a></li>
-            <li class="breadcrumb-item active" >New Car</li>
+            <li class="breadcrumb-item active" >Edit car: {{car.license_plate}}</li>
         </ol>
     </nav>
     <br><br>
 
-    <form method="post" action="{{ url('panel:car_new') }}" role="form" enctype="multipart/form-data">
+    <form method="post" action="{{ url('panel:car_edit', args=[car.id]) }}" role="form" enctype="multipart/form-data">
         <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 text-left" >
@@ -147,6 +147,8 @@
                     {% endif %}
                 </div> 
 
+                
+
 
             </div>
 
@@ -200,7 +202,7 @@
                         {{car_form.price.errors}}
                     </div>
                     {% endif %}
-                </div> 
+                </div>
 
                 <div class="form-group">
                     <span>{{car_form.owner.label}}</span>
@@ -211,8 +213,6 @@
                     </div>
                     {% endif %}
                 </div> 
-                
-                
                 
             </div>
         </div>

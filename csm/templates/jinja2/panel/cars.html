@@ -40,7 +40,13 @@
 		    		<td>&euro; {{car.price}}</td>
 		    		<td>{{car.cc}}</td>
 		    		<td>{{car.license_plate}}</td>
-					<td>{{car.owner.full_name()}}</td>
+					<td>
+						{% if owner %}
+							{{car.owner.full_name()}}
+						{% else %}
+							No owner
+						{% endif %}
+					</td>
 				</tr>
 			{% endfor %}
 	    </tbody>
