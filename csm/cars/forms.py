@@ -197,7 +197,7 @@ class CarForm(forms.ModelForm):
         }))
 
     owner = forms.ModelChoiceField(queryset=Owner.objects.all(),
-                                   empty_label='Select Garage',
+                                   empty_label='Select Owner',
                                    required=False,
                                    widget=Select(
         attrs={
